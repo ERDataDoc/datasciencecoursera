@@ -129,5 +129,20 @@ Fast-forward
 
 Now go to that file and see if the comments that were edited in GitHub show up locally.
 
+If you have started a remote repo but did not clone it at the beginning, can still link them up.
+
+Go to git and make a new directory that matches the github directory
+mkdir (new directory name) = makes the directory
+git init = initializes the newly made directory
+
+now point the local repo at the remote repo
+git remote add origin (url of github remote repo)
+
+To "fork" another persons repo - go to that person's repo of interest, and click on the "fork" button
+Go to your github account and check to see if it was forked into your repo
+Now make a local repo of the new repo
+(go to git, go to the directory you want the new directory in, git clone url, and should be there)
+
+
 These instructions should suffice to get started in git and github.
 

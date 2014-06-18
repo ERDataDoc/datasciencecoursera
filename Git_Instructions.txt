@@ -1,1 +1,133 @@
 Git Instructions
+
+It is much easier to create a new repository in GitHub and then clone it into the local repository.
+
+Creating GitHub Repo
+Click on the "+" button to create a new repo
+Fill in "Repository Name"
+Add description of repo
+Check "Public"
+Check "Initialize this repository with a README"
+hit "Create repository"
+
+Go to main page on GitHub to make sure the repo is there.
+Select that repo - should say (username/repo_name)
+Should have the README.md file in it
+Go to the HTTPS clone URL selection on the right hand side of screen - hit button that says "copy to clipboard" - this will copy the URL to your clipboard
+
+Now go to git on your computer (local repository)
+pwd = print working directory - tells what directory you are in
+ls = list files in that directory
+cd = change directory
+cd .. = up one directory
+
+Go to the directory in which you want the newly created GitHub directory to be installed locally, which will then link the local repo with the remote repo
+
+git clone (new github directory url that you copied into clipboard)
+ls = lists files and directories - the new github repo directory should be there
+cd to the new repo directory
+ls = should have the README.md file
+git remote - v = should list the remote repo URLs
+Randys-MacBook-Pro-6:repotest rthompermd$ git remote -v
+origin	https://github.com/rthompermd/repotest.git (fetch)
+origin	https://github.com/rthompermd/repotest.git (push)
+
+To open the README.md file - open up your text editor (TextMate in my case)
+At top header bar select "File", then "Open", and now go to the newly created local repo directory, and select the file - in this case README.md
+This should create a new file in which you can read the README.md file - whatever is typed in there
+
+You can now edit this file - type in whatever you want.
+"Save" your new changes
+Go to git to see if the new changes are detected
+git status = lists status of files
+
+Randys-MacBook-Pro-6:repotest rthompermd$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Randys-MacBook-Pro-6:repotest rthompermd$ 
+
+Now need to add this file to the staging area so it can be committed later = by add command; add . = adds all newly modified files
+
+git add .
+now check status - git status
+
+Randys-MacBook-Pro-6:repotest rthompermd$ git add .
+Randys-MacBook-Pro-6:repotest rthompermd$ ls
+README.md
+Randys-MacBook-Pro-6:repotest rthompermd$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   README.md
+
+Randys-MacBook-Pro-6:repotest rthompermd$ 
+
+Now need to commit the changes to the head
+git commit -m"note about commit - it actually needs to be in the parenthesis"
+Randys-MacBook-Pro-6:repotest rthompermd$ git commit -m"first git edit of README.md file"
+[master 3bf628a] first git edit of README.md file
+ 1 file changed, 2 insertions(+)
+Randys-MacBook-Pro-6:repotest rthompermd$ 
+
+git status
+Randys-MacBook-Pro-6:repotest rthompermd$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+Randys-MacBook-Pro-6:repotest rthompermd$ 
+
+Now need to push these changes to the file back to the remote repo in GitHub
+git push origin master = pushes the committed files back to the master branch in the origin in GitHub
+
+Randys-MacBook-Pro-6:repotest rthompermd$ git push origin master
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 312 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/rthompermd/repotest.git
+   24d5613..3bf628a  master -> master
+Randys-MacBook-Pro-6:repotest rthompermd$ 
+
+Now go to GitHub to see if the edited files were actually pushed to the repo
+Refresh the browser screen when you are in that remote repo
+The changes to the files you made should now show up in that same file in GitHub
+
+If you make changes in the GitHub repo file, and want to send them to the local repo file on your computer, need to do a pull (or a fetch and merge)
+
+Select a file in GitHub and make your changes
+Go to that file and select "edit"
+type in your comments, when done go to the bottom and put in comments in the "Commit changes" area, then select "Commit changes"
+
+Now need to pull them into git
+go to git
+git pull urlname
+Randys-MacBook-Pro-6:repotest rthompermd$ git pull https://github.com/rthompermd/repotest.git
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From https://github.com/rthompermd/repotest
+ * branch            HEAD       -> FETCH_HEAD
+Updating 3bf628a..b7a0d8a
+Fast-forward
+ README.md | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Now go to that file and see if the comments that were edited in GitHub show up locally.
+
+These instructions should suffice to get started in git and github.
+
